@@ -1,47 +1,32 @@
 {
-  "en": {
-    "title": "AllFigs - All LEGO Minifigure Collection",
-    "header": {
-      "welcome": "Welcome to the All LEGO Minifigure Collection!"
+    "en": {
+        "title": "AllFigs - All LEGO Minifigures",
+        "header": {
+            "welcome": "Welcome to AllFigs!"
+        },
+        "footer": {
+            "copyright": "© 2024 AllFigs. All rights reserved."
+        },
+        "filters": {
+            "series": "Select Series"
+        },
+        "catalog": {
+            "title": "Catalog"
+        }
     },
-    "footer": {
-      "copyright": "&copy; 2024 AllFigs. All rights reserved."
-    },
-    "filters": {
-      "series": "Series"
-    },
-    "catalog": {
-      "title": "Minifigure Catalog"
+    "ru": {
+        "title": "AllFigs - Вся коллекция LEGO минифигурок",
+        "header": {
+            "welcome": "Добро пожаловать в AllFigs!"
+        },
+        "footer": {
+            "copyright": "© 2024 AllFigs. Все права защищены."
+        },
+        "filters": {
+            "series": "Выберите серию"
+        },
+        "catalog": {
+            "title": "Каталог"
+        }
     }
-  },
-  "ru": {
-    "title": "AllFigs - Вся коллекция LEGO минифигурок",
-    "header": {
-      "welcome": "Вся коллекция LEGO минифигурок в одном месте!"
-    },
-    "footer": {
-      "copyright": "&copy; 2024 AllFigs. Все права защищены."
-    },
-    "filters": {
-      "series": "Серия"
-    },
-    "catalog": {
-      "title": "Каталог минифигурок"
-    }
-  },
-  "de": {
-    "title": "AllFigs - Alle LEGO Minifiguren Sammlung",
-    "header": {
-      "welcome": "Willkommen in der LEGO Minifigurensammlung!"
-    },
-    "footer": {
-      "copyright": "&copy; 2024 AllFigs. Alle Rechte vorbehalten."
-    },
-    "filters": {
-      "series": "Serie"
-    },
-    "catalog": {
-      "title": "Minifigur Katalog"
-    }
-  }
 }
