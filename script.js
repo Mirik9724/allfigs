@@ -14,6 +14,7 @@ function loadHTML(component, containerId) {
         })
         .catch((error) => {
             console.error("Ошибка при загрузке компонента:", error);
+            document.getElementById(containerId).innerHTML = `<p>Ошибка при загрузке ${component}</p>`;
         });
 }
 
@@ -32,6 +33,9 @@ function loadTranslations(language) {
         })
         .then((translations) => {
             const langData = translations[language];
+            if (!langData) {
+                throw new Error(`Переводы для языка ${language} не найдены`);
+            }
 
             // Обновляем title
             document.title = langData.title;
@@ -51,6 +55,13 @@ function loadTranslations(language) {
         })
         .catch((error) => {
             console.error("Ошибка при загрузке переводов:", error);
+            // Устанавливаем стандартные значения в случае ошибки
+            document.title = "AllFigs - LEGO Minifigures Collection";
+            document.getElementById("site-title").textContent = "Welcome to AllFigs!";
+            document.getElementById("footer-text").innerHTML = "© 2024 AllFigs. All rights reserved.";
+            document.getElementById("filters-title").textContent = "Select Series";
+            document.getElementById("series-label").textContent = "Select Series";
+            document.getElementById("catalog-title").textContent = "Catalog";
         });
 }
 
