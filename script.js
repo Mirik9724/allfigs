@@ -1,4 +1,6 @@
-// Функция для загрузки внешнего HTML
+let currentLanguage = "ru"; // По умолчанию русский
+
+// Функция для загрузки внешнего HTML (Header и Footer)
 function loadHTML(component, containerId) {
     fetch(component)
         .then((response) => response.text())
@@ -14,34 +16,51 @@ function loadHTML(component, containerId) {
 loadHTML("header.html", "header-container");
 loadHTML("footer.html", "footer-container");
 
-// Функция для извлечения заголовка из sta.txt
-function getTitleFromText(text) {
-    const lines = text.split('\n');
-    let title = '';
+// Функция для загрузки переводов
+function loadTranslations(language) {
+    fetch("translations.json")
+        .then((response) => response.json())
+        .then((translations) => {
+            const langData = translations[language];
 
-    // Ищем строку с нужным заголовком
-    for (let line of lines) {
-        if (line.startsWith("title:")) {
-            title = line.replace("title:", "").trim();
-            break;
-        }
-    }
+            // Обновляем title
+            document.title = langData.title;
 
-    return title;
+            // Обновляем содержимое Header
+            document.getElementById("site-title").textContent = langData.header.welcome;
+
+            // Обновляем содержимое Footer
+            document.getElementById("footer-text").innerHTML = langData.footer.copyright;
+
+            // Обновляем фильтры
+            document.getElementById("filters-title").textContent = langData.filters.series;
+            document.getElementById("series-label").textContent = langData.filters.series;
+
+            // Обновляем каталог
+            document.getElementById("catalog-title").textContent = langData.catalog.title;
+        })
+        .catch((error) => {
+            console.error("Ошибка при загрузке переводов:", error);
+        });
 }
 
-// Загружаем данные из sta.txt
-fetch("sta.txt")
-    .then((response) => response.text())
-    .then((data) => {
-        const title = getTitleFromText(data); // Получаем заголовок из текста
-        document.title = title; // Устанавливаем заголовок страницы
-        document.getElementById("site-title").textContent = title; // Устанавливаем заголовок на странице
-    })
-    .catch((error) => {
-        console.error("Ошибка загрузки заголовка:", error);
-    });
+// Инициализация с текущим языком
+loadTranslations(currentLanguage);
 
-// Пример каталога (временный заглушка)
+// Функция для смены языка
+function changeLanguage(language) {
+    currentLanguage = language;
+    loadTranslations(language);
+}
+
+// Пример каталога (временная заглушка)
 const figuresContainer = document.getElementById("figures-container");
 figuresContainer.innerHTML = "<p>Каталог пока пуст...</p>";
+
+// Пример переключателя языка
+const langSwitcher = document.getElementById("language-switcher");
+if (langSwitcher) {
+    langSwitcher.addEventListener("change", (event) => {
+        changeLanguage(event.target.value);
+    });
+}
