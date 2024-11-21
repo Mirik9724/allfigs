@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading...</title> <!-- Временный заголовок -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Заголовок страницы -->
+    <header id="header">
+        <h1 id="site-title">Loading...</h1>
+        <p>Вся коллекция LEGO минифигурок в одном месте!</p>
+    </header>
+
+    <main>
+        <section id="filters">
+            <h2>Фильтры</h2>
+            <label for="series">Серия:</label>
+            <select id="series">
+                <option value="all">Все</option>
+                <option value="Ninjago">Ninjago</option>
+                <option value="Star Wars">Star Wars</option>
+                <option value="City">City</option>
+            </select>
+        </section>
+
+        <section id="catalog">
+            <h2>Каталог минифигурок</h2>
+            <div id="figures-container">
+                <!-- Минифигурки будут добавлены сюда через JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Футер -->
+    <footer id="footer">
+        <p>&copy; 2024 AllFigs. Все права защищены.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
