@@ -1,9 +1,14 @@
-let currentLanguage = "ru"; // По умолчанию русский
+let currentLanguage = "en"; // По умолчанию английский язык
 
 // Функция для загрузки внешнего HTML (Header и Footer)
 function loadHTML(component, containerId) {
     fetch(component)
-        .then((response) => response.text())
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`Ошибка при загрузке компонента: ${response.statusText}`);
+            }
+            return response.text();
+        })
         .then((html) => {
             document.getElementById(containerId).innerHTML = html;
         })
@@ -19,7 +24,12 @@ loadHTML("footer.html", "footer-container");
 // Функция для загрузки переводов
 function loadTranslations(language) {
     fetch("translations.json")
-        .then((response) => response.json())
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`Ошибка при загрузке переводов: ${response.statusText}`);
+            }
+            return response.json();
+        })
         .then((translations) => {
             const langData = translations[language];
 
@@ -44,7 +54,7 @@ function loadTranslations(language) {
         });
 }
 
-// Инициализация с текущим языком
+// Инициализация с текущим языком (по умолчанию английский)
 loadTranslations(currentLanguage);
 
 // Функция для смены языка
@@ -55,7 +65,7 @@ function changeLanguage(language) {
 
 // Пример каталога (временная заглушка)
 const figuresContainer = document.getElementById("figures-container");
-figuresContainer.innerHTML = "<p>Каталог пока пуст...</p>";
+figuresContainer.innerHTML = "<p>Catalog is empty...</p>";
 
 // Пример переключателя языка
 const langSwitcher = document.getElementById("language-switcher");
@@ -64,3 +74,37 @@ if (langSwitcher) {
         changeLanguage(event.target.value);
     });
 }
+
+// Функция фильтрации минифигурок
+document.getElementById("series").addEventListener("change", (event) => {
+    const selectedSeries = event.target.value;
+    filterFiguresBySeries(selectedSeries);
+});
+
+// Пример фильтрации фигурок (в реальном проекте данные будут загружаться динамически)
+const allFigures = [
+    { name: "Ninjago - Zane", series: "Ninjago" },
+    { name: "Star Wars - Luke", series: "Star Wars" },
+    { name: "City - Policeman", series: "City" },
+    { name: "Ninjago - Kai", series: "Ninjago" },
+    // Добавь остальные фигурки
+];
+
+function filterFiguresBySeries(series) {
+    let filteredFigures = allFigures;
+    
+    if (series !== "all") {
+        filteredFigures = allFigures.filter(figure => figure.series === series);
+    }
+    
+    figuresContainer.innerHTML = "";
+    filteredFigures.forEach(figure => {
+        const figureElement = document.createElement("div");
+        figureElement.classList.add("figure");
+        figureElement.innerHTML = `<p>${figure.name}</p>`;
+        figuresContainer.appendChild(figureElement);
+    });
+}
+
+// Изначальная фильтрация по умолчанию (показывать все)
+filterFiguresBySeries("all");
