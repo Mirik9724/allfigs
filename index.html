@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,11 +14,11 @@
             <h2 id="filters-title">Loading...</h2>
             <label for="series" id="series-label">Loading...</label>
             <select id="series">
-    <option value="all">Все</option> <!-- Это будет отображаться как "Все" в интерфейсе, но работать будет как "all" -->
-    <option value="Ninjago">Ninjago</option>
-    <option value="Star Wars">Star Wars</option>
-    <option value="City">City</option>
-</select>
+                <option value="all">All</option> <!-- Фильтрация по всем сериям -->
+                <option value="Ninjago">Ninjago</option>
+                <option value="Star Wars">Star Wars</option>
+                <option value="City">City</option>
+            </select>
         </section>
 
         <section id="catalog">
@@ -30,6 +30,12 @@
     </main>
 
     <div id="footer-container"></div>
+
+    <!-- Переключатель языков -->
+    <select id="language-switcher">
+        <option value="en" selected>English</option>
+        <option value="ru">Русский</option>
+    </select>
 
     <script src="script.js"></script>
 </body>
