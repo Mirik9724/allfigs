@@ -86,7 +86,7 @@ if (langSwitcher) {
     });
 }
 
-// Функция фильтрации минифигурок
+// Пример фильтрации минифигурок
 document.getElementById("series").addEventListener("change", (event) => {
     const selectedSeries = event.target.value;
     filterFiguresBySeries(selectedSeries);
