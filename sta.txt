@@ -1,3 +1,1 @@
-
-    "title": "AllFigs - Вся коллекция LEGO минифигурок"
-
+title: AllFigs - Вся коллекция LEGO минифигурок
