@@ -1,4 +1,4 @@
-let currentLanguage = "en"; // По умолчанию английский язык
+let currentLanguage = "en"; // Язык по умолчанию: английский
 
 // Функция для загрузки внешнего HTML (Header и Footer)
 function loadHTML(component, containerId) {
