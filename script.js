@@ -1,4 +1,20 @@
-// Функция для извлечения данных из sta.txt
+// Функция для загрузки внешнего HTML
+function loadHTML(component, containerId) {
+    fetch(component)
+        .then((response) => response.text())
+        .then((html) => {
+            document.getElementById(containerId).innerHTML = html;
+        })
+        .catch((error) => {
+            console.error("Ошибка при загрузке компонента:", error);
+        });
+}
+
+// Загружаем Header и Footer
+loadHTML("header.html", "header-container");
+loadHTML("footer.html", "footer-container");
+
+// Функция для извлечения заголовка из sta.txt
 function getTitleFromText(text) {
     const lines = text.split('\n');
     let title = '';
